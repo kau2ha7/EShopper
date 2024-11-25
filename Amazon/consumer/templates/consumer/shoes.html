@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Shoes{% endblock title %}
+{% block body %}
+<div class="container my-4">
+  <!-- Scrollable Tabs -->
+  <ul class="nav nav-tabs flex-nowrap" style="overflow-x: auto; white-space: nowrap; display: flex;">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'shoes' %}">All Shoes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Prada' %}">Prada</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Nike' %}">Nike</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Adidas' %}">Adidas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Bata' %}">Bata</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Levis' %}">Levis</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Lee' %}">Lee Cooper</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Gucci' %}">Gucci</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Oxford' %}">Oxford</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'Clarks' %}">Clarks</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'below' %}">Below 10000</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'shoesdata' 'above' %}">Above 10000</a>
+    </li>
+  </ul>
+</div>
+
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for product in shoes %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{product.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{product.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{product.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{product.selling_price}}</del></h6>
+                    </div>
+                </div>
+                   <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                   <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

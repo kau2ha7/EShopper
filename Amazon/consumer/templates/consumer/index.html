@@ -1,0 +1,263 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block body %}
+<!-- Product Slider -->
+<!-- first Slider -->
+<h2>MyShop Bottom Wears</h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for b in bottomwears %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{b.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{b.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{b.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{b.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' b.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                   <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{b.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+ {% comment %} endfirst slider {% endcomment %}
+
+
+<!-- 2nd Product Slider -->
+<h2>MyShop TopWears </h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for tw in topwears %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{tw.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{tw.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{tw.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{tw.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' tw.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                    <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{tw.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% comment %} end 2nd slider {% endcomment %}
+
+<!-- 3rd Product Slider -->
+<h2>MyShop SleepWears </h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for sw in sleepwear %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{sw.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{sw.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{sw.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{sw.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' sw.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                   <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{sw.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% comment %} end 3rd slider {% endcomment %}
+
+
+<!-- 4th Product Slider -->
+<h2>MyShop Shoes </h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for s in shoes %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{s.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{s.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{s.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{s.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' s.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                      <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{s.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+        
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% comment %} end 4th slider {% endcomment %}
+
+<!-- 5th Product Slider -->
+<h2>MyShop Jackets </h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for j in jackets %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{j.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{j.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{j.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{j.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' j.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                  <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{j.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% comment %} end 5th slider {% endcomment %}
+
+
+<!-- 6th Product Slider -->
+<h2>MyShop Blazzers </h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for bz in blazzers %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{bz.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{bz.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{bz.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{bz.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' bz.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                    <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{bz.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% comment %} end 6th slider {% endcomment %}
+
+<!-- 7th Product Slider -->
+<h2>MyShop Shirts </h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for st in shirts %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{st.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{s.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{st.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{st.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' st.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                   <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{st.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% comment %} end 7th slider {% endcomment %}
+
+
+<!-- 8th Product Slider -->
+<h2>MyShop Jeans </h2>
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for js in jeans %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{js.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{js.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{js.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{js.selling_price}}</del></h6>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' js.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                   <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{js.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% comment %} end 4th slider {% endcomment %}
+
+
+
+
+
+{% endblock body %}

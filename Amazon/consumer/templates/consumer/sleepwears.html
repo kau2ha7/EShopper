@@ -1,0 +1,72 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Sleep Wears{% endblock title %}
+{% block body %}
+<div class="container my-4">
+  <!-- Scrollable Tabs -->
+  <ul class="nav nav-tabs flex-nowrap" style="overflow-x: auto; white-space: nowrap; display: flex;">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'sleepwears' %}">All SleepWears</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Natori' %}">Natori</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Lanya' %}">Lanya</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Skin' %}">Skin</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Pajamagram' %}">Pajamagram</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Barefoot_Dreams' %}">Barefoot Dreams</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Calvin_Klein' %}">Calvin Klein</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Victoria_Secret' %}">Victoria Secret</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'Eberjay' %}">Eberjay</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'below' %}">Below 10000</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sleepwearsdata' 'above' %}">Above 10000</a>
+    </li>
+  </ul>
+</div>
+
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        {% for product in sleepwears %}
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{product.product_img.url}}" alt="Product Image" style="height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{product.title}}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>Rs.{{product.discounted_price}}</h6>
+                        <h6 class="text-muted ml-2"><del>Rs. {{product.selling_price}}</del></h6>
+                    </div>
+                </div>
+                   <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                   <form action="/add_to_cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id"> 
+                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                     </form>
+                </div>
+            
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
